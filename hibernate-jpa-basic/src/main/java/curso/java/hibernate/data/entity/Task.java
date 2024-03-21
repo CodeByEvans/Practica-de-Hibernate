@@ -18,6 +18,9 @@ public class Task implements Serializable {
     private String taskDescription;
     @Column
     private Integer employeeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "scope_id")
+    private Scope scope;
 
     public Integer getEmployeeId() {
         return employeeId;
@@ -50,6 +53,10 @@ public class Task implements Serializable {
     public void setTaskDescription(String taskDescription) {
         this.taskDescription = taskDescription;
     }
+
+    public Scope getScope() {return scope;}
+
+    public void setScope(Scope scope) {this.scope = scope;}
 
     @Override
     public String toString() {

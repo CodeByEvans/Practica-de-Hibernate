@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,6 +32,7 @@ public class Employee implements Serializable {
   @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
   @JoinColumn(name = "employeeId")
   private Set<Task> tasks = new HashSet<>();
+
 
   public Integer getId() {
     return id;
@@ -63,9 +65,7 @@ public class Employee implements Serializable {
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
-  public Set<Task> getTasks() {
-    return tasks;
-  }
+
   public void setTasks(Set<Task> tasks) {
     this.tasks = tasks;
   }
